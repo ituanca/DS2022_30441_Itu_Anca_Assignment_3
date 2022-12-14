@@ -1,0 +1,5 @@
+/energy-visualization-platform/node_modules/
+/spring-demo/src/main/resources/application.properties
+/smart-metering-device-simulator/src/main/resources/application.properties
+/spring-demo/target/classes/application.properties
+/smart-metering-device-simulator/target/classes/application.properties
