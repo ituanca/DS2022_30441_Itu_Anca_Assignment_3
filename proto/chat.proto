@@ -1,0 +1,25 @@
+syntax="proto3";// syntax of the proto file (current version is 3)
+package proto.chat; // package where we will generate the file
+
+option java_multiple_files = true; // use multiple file for each object instead of one big file
+
+message ChatMessage {
+  string from = 1;
+  string msg = 2;
+  string time = 3;
+}
+
+message Empty {}
+
+message MessageRequest{
+  ChatMessage chatMessage = 1;
+}
+
+message MessageResponse{
+  string result = 1;
+}
+
+service ChatService {
+  rpc sendMsg(MessageRequest) returns (MessageResponse) {}
+  rpc receiveMsg(Empty) returns (ChatMessage) {}
+}

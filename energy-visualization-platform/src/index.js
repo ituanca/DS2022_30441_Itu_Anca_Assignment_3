@@ -23,6 +23,7 @@ import ViewMappings from "./components/admin/mappingActions/ViewMappings";
 import ViewDailyEnergyConsumption from "./components/client/ViewDailyEnergyConsumption";
 import Connect from "./components/webSocketConnection/Connection";
 import Popup from "./components/webSocketConnection/Popup";
+import Chat from "./components/chat/Chat";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -49,6 +50,7 @@ root.render(
               <Route path="/ViewDailyEnergyConsumption" element={<ViewDailyEnergyConsumption />} />
               <Route path="/Connect" element={<Connect />} />
               <Route path="/Popup" element={<Popup />} />
+              <Route path="/Chat" element={<Chat />} />
           </Routes>
       </BrowserRouter>,
   </React.StrictMode>
