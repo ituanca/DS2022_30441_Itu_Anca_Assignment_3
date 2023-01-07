@@ -6,9 +6,8 @@ export default function Chat({ msgList, sendMessage }) {
 
     const [message, setMessage] = useState("");
 
-    function handler() {
-        const msg = message.value;
-        sendMessage(msg);
+    function handleSend() {
+        sendMessage(message);
         setMessage("");
     }
 
@@ -27,10 +26,10 @@ export default function Chat({ msgList, sendMessage }) {
             <div className="chat-input">
                 <div style={{flex: "3 1 90%"}}>
                     <textarea
-                        id="msgTextArea"
                         value={message}
-                        name="message"
-                        onChange={handleTextareaInput}/>
+                        name="message" required
+                        onChange={handleTextareaInput}
+                        id="message"/>
                 </div>
                 <div
                     style={{
@@ -41,7 +40,7 @@ export default function Chat({ msgList, sendMessage }) {
                         justifyContent: "flex-end",
                     }}
                 >
-                    <button onClick={handler}>Send</button>
+                    <button onClick={handleSend}>Send</button>
                 </div>
             </div>
         </div>
@@ -51,9 +50,6 @@ export default function Chat({ msgList, sendMessage }) {
 function ChatCard({chat}) {
     return (
         <div>
-            <div style={{ fontSize: "9px", marginLeft: "4px", paddingLeft: "8px" }}>
-                <span>{chat.from}</span>
-            </div>
             <div className={chat.mine ? "chatcard chatcard-mine" : "chatcard chatcard-friend"}>
                 <div className="chatcard-msg">
                     <span>{chat.msg}</span>

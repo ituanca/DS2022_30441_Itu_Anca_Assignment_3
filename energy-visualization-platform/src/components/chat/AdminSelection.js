@@ -6,10 +6,9 @@ import axios from "axios";
 import ChatPage from "./chatPage/ChatPage";
 import {ChatServiceClient} from "../../output/generated1/src/grpc/protos/chat1_pb_service";
 
-export const client = new ChatServiceClient('http://localhost:8081');
-
 function AdminSelection(){
 
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [admin, setAdmin] = useState({
         id: "",
         name: "",
@@ -44,14 +43,18 @@ function AdminSelection(){
     function handleSubmit(event) {
         event.preventDefault()
         // localStorage.setItem("client", JSON.stringify(client))
-        return <ChatPage client={client} />;
+        setIsSubmitted(true)
     }
+
+    // const renderChatPage = () => {
+    //     return <ChatPage client={client} />
+    // }
 
     const render = () => {
         if(admins!==null && admins.length > 0){
             return (
                 <div>
-                    <form className="form-user">
+                    <form onSubmit={handleSubmit} className="form-user">
                         <div className="input-container-col">
                             <label>Select an admin:</label>
                             <select className="select-device" onChange={event => {
@@ -72,12 +75,12 @@ function AdminSelection(){
                         {/*<div className="button-container">*/}
                         {/*    <input type="submit" value={"Chat with " + admin.username}/>*/}
                         {/*</div>*/}
+                        <nav>
+                            <Link to="/ChatPage">
+                                <button className="users-button">Chat with {admin.username}</button>
+                            </Link>
+                        </nav>
                     </form>
-                    <nav>
-                        <Link to="/ChatPage">
-                            <button className="users-button">Chat with {admin.username}</button>
-                        </Link>
-                    </nav>
                 </div>
             );
         }
@@ -89,6 +92,7 @@ function AdminSelection(){
                 <h3>Chat with an admin</h3>
                 <div className="container">
                     <main className="main">
+                        {/*{isSubmitted ? renderChatPage() : render()}*/}
                         {render()}
                     </main>
                 </div>

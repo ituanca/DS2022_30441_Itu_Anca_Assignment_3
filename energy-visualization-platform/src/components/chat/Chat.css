@@ -35,14 +35,16 @@
 }
 
 .chat-input button {
-    border-radius: 50px;
+    border-radius: 20px;
     margin-left: 10px;
+    background-color: #77d2ed;
+    border-width: thin;
 }
 
 .chatcard {
     background-color: dodgerblue;
     padding: 8px;
-    border-radius: 14px;
+    border-radius: 30px;
     margin: 4px;
     color: white;
 }
@@ -52,15 +54,17 @@
 }
 
 .chatcard-friend {
-    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     background-color: forestgreen;
 }
 
 .chatcard-msg {
     padding: 4px;
+    text-align: left;
 }
 
 .chatcard-time {
     text-align: right;
-    font-size: 10px;
+    font-size: 12px;
+    margin-right: 10px;
 }
