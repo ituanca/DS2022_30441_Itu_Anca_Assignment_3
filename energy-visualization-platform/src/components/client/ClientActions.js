@@ -23,8 +23,8 @@ function ClientActions(){
                     </div>
                     <span>&nbsp;&nbsp;</span>
                     <div>
-                        <Link to="/Chat">
-                            <button className="users-button">Chat with the administrator</button>
+                        <Link to="/AdminSelection">
+                            <button className="users-button">Chat with one of our administrators</button>
                         </Link>
                     </div>
                     <span>&nbsp;&nbsp;</span>

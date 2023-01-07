@@ -58,6 +58,18 @@ public class PersonController {
         return new ResponseEntity<>(dtos, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/admins")
+    public ResponseEntity<List<PersonDetailsDTO>> getAdmins() {
+        List<PersonDetailsDTO> dtos = personService.findAdmins();
+        for (PersonDetailsDTO dto : dtos) {
+            Link personLink = linkTo(methodOn(PersonController.class)
+                    .getPerson(dto.getId())).withRel("personDetails");
+            dto.add(personLink);
+        }
+        return new ResponseEntity<>(dtos, HttpStatus.OK);
+    }
+
+
     @GetMapping(value = "/{username}")
     public ResponseEntity<PersonDetailsDTO> getPersonByUsername(@PathVariable("username") String username) {
         PersonDetailsDTO dto = personService.findPersonDetailsDTOByUsername(username);

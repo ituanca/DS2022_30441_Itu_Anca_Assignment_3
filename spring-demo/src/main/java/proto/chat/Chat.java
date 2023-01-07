@@ -29,11 +29,6 @@ public final class Chat {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_proto_chat_MessageRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_proto_chat_MessageResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_proto_chat_MessageResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -46,12 +41,11 @@ public final class Chat {
       "\n\nchat.proto\022\nproto.chat\"6\n\013ChatMessage\022" +
       "\014\n\004from\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\022\014\n\004time\030\003 \001(\t" +
       "\"\007\n\005Empty\">\n\016MessageRequest\022,\n\013chatMessa" +
-      "ge\030\001 \001(\0132\027.proto.chat.ChatMessage\"!\n\017Mes" +
-      "sageResponse\022\016\n\006result\030\001 \001(\t2\217\001\n\013ChatSer" +
-      "vice\022D\n\007sendMsg\022\032.proto.chat.MessageRequ" +
-      "est\032\033.proto.chat.MessageResponse\"\000\022:\n\nre" +
-      "ceiveMsg\022\021.proto.chat.Empty\032\027.proto.chat" +
-      ".ChatMessage\"\000B\002P\001b\006proto3"
+      "ge\030\001 \001(\0132\027.proto.chat.ChatMessage2\207\001\n\013Ch" +
+      "atService\022:\n\007sendMsg\022\032.proto.chat.Messag" +
+      "eRequest\032\021.proto.chat.Empty\"\000\022<\n\nreceive" +
+      "Msg\022\021.proto.chat.Empty\032\027.proto.chat.Chat" +
+      "Message\"\0000\001B\002P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -75,12 +69,6 @@ public final class Chat {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_proto_chat_MessageRequest_descriptor,
         new java.lang.String[] { "ChatMessage", });
-    internal_static_proto_chat_MessageResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_proto_chat_MessageResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_proto_chat_MessageResponse_descriptor,
-        new java.lang.String[] { "Result", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

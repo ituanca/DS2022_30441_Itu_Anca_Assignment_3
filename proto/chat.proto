@@ -15,11 +15,7 @@ message MessageRequest{
   ChatMessage chatMessage = 1;
 }
 
-message MessageResponse{
-  string result = 1;
-}
-
 service ChatService {
-  rpc sendMsg(MessageRequest) returns (MessageResponse) {}
-  rpc receiveMsg(Empty) returns (ChatMessage) {}
+  rpc sendMsg(MessageRequest) returns (Empty) {}
+  rpc receiveMsg(Empty) returns (stream ChatMessage) {}
 }

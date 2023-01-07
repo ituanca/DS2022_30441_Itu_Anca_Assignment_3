@@ -10,14 +10,14 @@ type ChatServicesendMsg = {
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof src_grpc_protos_chat1_pb.MessageRequest;
-  readonly responseType: typeof src_grpc_protos_chat1_pb.MessageResponse;
+  readonly responseType: typeof src_grpc_protos_chat1_pb.Empty;
 };
 
 type ChatServicereceiveMsg = {
   readonly methodName: string;
   readonly service: typeof ChatService;
   readonly requestStream: false;
-  readonly responseStream: false;
+  readonly responseStream: true;
   readonly requestType: typeof src_grpc_protos_chat1_pb.Empty;
   readonly responseType: typeof src_grpc_protos_chat1_pb.ChatMessage;
 };
@@ -63,20 +63,12 @@ export class ChatServiceClient {
   sendMsg(
     requestMessage: src_grpc_protos_chat1_pb.MessageRequest,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.MessageResponse|null) => void
+    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.Empty|null) => void
   ): UnaryResponse;
   sendMsg(
     requestMessage: src_grpc_protos_chat1_pb.MessageRequest,
-    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.MessageResponse|null) => void
+    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.Empty|null) => void
   ): UnaryResponse;
-  receiveMsg(
-    requestMessage: src_grpc_protos_chat1_pb.Empty,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.ChatMessage|null) => void
-  ): UnaryResponse;
-  receiveMsg(
-    requestMessage: src_grpc_protos_chat1_pb.Empty,
-    callback: (error: ServiceError|null, responseMessage: src_grpc_protos_chat1_pb.ChatMessage|null) => void
-  ): UnaryResponse;
+  receiveMsg(requestMessage: src_grpc_protos_chat1_pb.Empty, metadata?: grpc.Metadata): ResponseStream<src_grpc_protos_chat1_pb.ChatMessage>;
 }
 

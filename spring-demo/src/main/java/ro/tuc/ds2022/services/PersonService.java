@@ -62,6 +62,19 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
+    public List<PersonDetailsDTO> findAdmins() {
+        List<Person> personList = personRepository.findAll();
+        List<Person> admins = new ArrayList<>();
+        for(Person person : personList){
+            if(person.getType().equals("admin")){
+                admins.add(person);
+            }
+        }
+        return admins.stream()
+                .map(PersonBuilder::toPersonDetailsDTO)
+                .collect(Collectors.toList());
+    }
+
     public PersonDetailsDTO findPersonDetailsDTOByUsername(String username) {
         Optional<Person> prosumerOptional = personRepository.findByUsername(username);
         if (!prosumerOptional.isPresent()) {
