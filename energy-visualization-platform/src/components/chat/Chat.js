@@ -1,56 +1,67 @@
 import React from "react";
-import {Link, Outlet} from "react-router-dom";
 import "./Chat.css"
-import {ChatServiceClient} from "../../output/generated1/src/grpc/protos/chat1_pb_service";
-import {ChatMessage, MessageRequest} from "../../output/generated1/src/grpc/protos/chat1_pb";
 import {useState} from "react";
 
-function Chat(){
+export default function Chat({ msgList, sendMessage }) {
 
-    const [user] = useState(JSON.parse(localStorage.getItem("user")));
-    const [selectedAdminUsername] = useState(JSON.parse(localStorage.getItem("selectedAdmin")));
+    const [message, setMessage] = useState("");
 
-    const grpcCall = () => {
-        // create our ChatMessage object
-        let chatMessage = new ChatMessage();
-        chatMessage.setFrom(user.username)
-        chatMessage.setMsg('Hello there ' + selectedAdminUsername + "!")
-        chatMessage.setTime(new Date().toString())
-
-        // prepare the message request
-        const request = new MessageRequest();
-        request.setChatmessage(chatMessage);
-
-        // create gRPC client that will call our java server
-        new ChatServiceClient('http://localhost:8081')
-            .sendMsg(request, {}, (err, response) => {
-                console.log({err, response});
-            });
+    function handler() {
+        const msg = message.value;
+        sendMessage(msg);
+        setMessage("");
     }
 
-    const render = () => {
-        return (
-            <div>
-                <button className="users-button" onClick={grpcCall}>Click</button>
-            </div>
-        );
-    };
+    const handleTextareaInput = event => {
+        const value = event.target.value;
+        setMessage(value);
+    }
 
     return (
-        <div className="app">
-            <div className="login-form">
-                <h3>Chat with {selectedAdminUsername}</h3>
-                {render()}
-                <span>&nbsp;&nbsp;</span>
-                <nav>
-                    <Link to="/ClientActions">
-                        <button className="go-back">Go back</button>
-                    </Link>
-                </nav>
-                <Outlet />
+        <div className="chat">
+            <div className="chat-list">
+                {msgList.map((chat, i) => (
+                    <ChatCard chat={chat} key={i} />
+                ))}
+            </div>
+            <div className="chat-input">
+                <div style={{flex: "3 1 90%"}}>
+                    <textarea
+                        id="msgTextArea"
+                        value={message}
+                        name="message"
+                        onChange={handleTextareaInput}/>
+                </div>
+                <div
+                    style={{
+                        padding: "5px",
+                        marginLeft: "5px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                    }}
+                >
+                    <button onClick={handler}>Send</button>
+                </div>
             </div>
         </div>
     );
 }
 
-export default Chat;
+function ChatCard({chat}) {
+    return (
+        <div>
+            <div style={{ fontSize: "9px", marginLeft: "4px", paddingLeft: "8px" }}>
+                <span>{chat.from}</span>
+            </div>
+            <div className={chat.mine ? "chatcard chatcard-mine" : "chatcard chatcard-friend"}>
+                <div className="chatcard-msg">
+                    <span>{chat.msg}</span>
+                </div>
+                <div className="chatcard-time">
+                    <span>{chat.time}</span>
+                </div>
+            </div>
+        </div>
+    )
+}

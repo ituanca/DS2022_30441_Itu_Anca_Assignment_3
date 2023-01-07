@@ -25,6 +25,7 @@ import Connect from "./components/webSocketConnection/Connection";
 import Popup from "./components/webSocketConnection/Popup";
 import Chat from "./components/chat/Chat";
 import AdminSelection from "./components/chat/AdminSelection";
+import ChatPage from "./components/chat/chatPage/ChatPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -53,6 +54,7 @@ root.render(
               <Route path="/Popup" element={<Popup />} />
               <Route path="/AdminSelection" element={<AdminSelection />} />
               <Route path="/Chat" element={<Chat />} />
+              <Route path="/ChatPage" element={<ChatPage />} />
           </Routes>
       </BrowserRouter>,
   </React.StrictMode>
