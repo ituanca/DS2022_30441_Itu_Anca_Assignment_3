@@ -11,7 +11,8 @@ const client = new ChatServiceClient('http://localhost:8081');
 export default function ChatPage(){
 
     const [user] = useState(JSON.parse(localStorage.getItem("user")));
-    const [selectedAdminUsername] = useState(JSON.parse(localStorage.getItem("selectedAdmin")));
+    const [recipient] = useState(JSON.parse(localStorage.getItem("selectedRecipient")));
+    const [userType] = useState(localStorage.getItem("userType"))
     const [msgList, setMsgList] = useState([]);
 
     useEffect(() => {
@@ -20,14 +21,15 @@ export default function ChatPage(){
         const chatStream = client.receiveMsg(request, {});
         chatStream.on("data", (response) => {
             const from = response.getFrom()
+            const to = response.getTo()
             const msg = response.getMsg()
             const time = response.getTime()
-            console.log("from: " + from + " msg: " + msg + " time: " + time)
+            console.log("from: " + from + " to: " + to + " msg: " + msg + " time: " + time)
 
-            if (from === user.username) {
-                setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: true }]);
-            } else {
-                setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: false }]);
+            if (to === recipient && from === user.username) {
+                setMsgList((oldArray) => [...oldArray, { from, to, msg, time, mine: true }]);
+            } else if (from === recipient && to === user.username){
+                setMsgList((oldArray) => [...oldArray, { from, to, msg, time, mine: false }]);
             }
         })
 
@@ -43,6 +45,7 @@ export default function ChatPage(){
     function sendMessage(message) {
         let chatMessage = new ChatMessage();
         chatMessage.setFrom(user.username)
+        chatMessage.setTo(recipient.toString())
         chatMessage.setMsg(message)
 
         const now = new Date();
@@ -59,18 +62,26 @@ export default function ChatPage(){
             });
     }
 
+    console.log(user.type)
+
     return (
         <div className="app">
             <div className="login-form">
-                <h3>Chat with {selectedAdminUsername}</h3>
+                <h3>Chat with {recipient}</h3>
                 <div className="chatpage">
                     <div className="chatpage-section">
                         <Chat msgList={msgList} sendMessage={sendMessage} />
                         <span>&nbsp;&nbsp;</span>
                         <nav>
-                            <Link to="/AdminSelection">
-                                <button className="go-back">Go back</button>
-                            </Link>
+                            { userType === "client" ?
+                                <Link to="/AdminSelection">
+                                    <button className="go-back">Go back</button>
+                                </Link>
+                            :
+                                <Link to="/ChatWithClients">
+                                    <button className="go-back">Go back</button>
+                                </Link>
+                            }
                         </nav>
                         <Outlet />
                     </div>

@@ -5,8 +5,9 @@ option java_multiple_files = true; // use multiple file for each object instead 
 
 message ChatMessage {
   string from = 1;
-  string msg = 2;
-  string time = 3;
+  string to = 2;
+  string msg = 3;
+  string time = 4;
 }
 
 message Empty {}

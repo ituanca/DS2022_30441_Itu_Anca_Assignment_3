@@ -35,6 +35,12 @@ function AdminActions(){
                                 <button className="users-button">Delete users</button>
                             </Link>
                         </div>
+                        <span>&nbsp;&nbsp;</span>
+                        <div>
+                            <Link to="/ChatWithClients">
+                                <button className="users-button">Chat with clients</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="button-container-admin-actions">
                         <h4>Devices</h4>

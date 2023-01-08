@@ -7,6 +7,9 @@ export class ChatMessage extends jspb.Message {
   getFrom(): string;
   setFrom(value: string): void;
 
+  getTo(): string;
+  setTo(value: string): void;
+
   getMsg(): string;
   setMsg(value: string): void;
 
@@ -26,6 +29,7 @@ export class ChatMessage extends jspb.Message {
 export namespace ChatMessage {
   export type AsObject = {
     from: string,
+    to: string,
     msg: string,
     time: string,
   }

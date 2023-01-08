@@ -26,6 +26,7 @@ import Popup from "./components/webSocketConnection/Popup";
 import Chat from "./components/chat/Chat";
 import AdminSelection from "./components/chat/AdminSelection";
 import ChatPage from "./components/chat/chatPage/ChatPage";
+import ChatWithClients from "./components/chat/ChatWithClients";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -55,6 +56,7 @@ root.render(
               <Route path="/AdminSelection" element={<AdminSelection />} />
               <Route path="/Chat" element={<Chat />} />
               <Route path="/ChatPage" element={<ChatPage />} />
+              <Route path="/ChatWithClients" element={<ChatWithClients />} />
           </Routes>
       </BrowserRouter>
 

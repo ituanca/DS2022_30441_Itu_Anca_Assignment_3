@@ -120,8 +120,10 @@ function LogIn(){
 
     const render = () => {
         if(adminIsSubmitted){
+            localStorage.setItem("userType", "admin");
             return renderAdminConfirmation;
         }else if(clientIsSubmitted){
+            localStorage.setItem("userType", "client");
             return renderClientConfirmation;
         }else{
             return renderForm;

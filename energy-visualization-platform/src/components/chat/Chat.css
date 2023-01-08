@@ -45,14 +45,17 @@
     border-radius: 30px;
     margin: 4px;
     color: white;
+    width: 75%;
 }
 
 .chatcard-mine {
     border-bottom-right-radius: 0;
+    float: right;
 }
 
 .chatcard-friend {
     border-bottom-left-radius: 0;
+    float: left;
     background-color: forestgreen;
 }
 

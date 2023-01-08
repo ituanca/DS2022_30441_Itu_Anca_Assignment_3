@@ -31,7 +31,7 @@ function AdminSelection(){
                 if(response.data!==null && response.data.length > 0){
                     setAdmins(response.data);
                     setAdmin(response.data[0])
-                    localStorage.setItem("selectedAdmin", JSON.stringify(response.data[0].username));
+                    localStorage.setItem("selectedRecipient", JSON.stringify(response.data[0].username));
                 }
             })
             .catch((error) => {
@@ -60,7 +60,7 @@ function AdminSelection(){
                                 for(let i = 0; i < admins.length; i++){
                                     if (event.target.value === admins.at(i).username){
                                         setAdmin(admins.at(i))
-                                        localStorage.setItem("selectedAdmin", JSON.stringify(admins.at(i).username));
+                                        localStorage.setItem("selectedRecipient", JSON.stringify(admins.at(i).username));
                                     }
                                 }
                             }}>
