@@ -1,13 +1,13 @@
 import React from "react";
-import "./Chat.css"
+import "./ChatAdmin.css"
 import {useState} from "react";
 
-export default function Chat({ msgList, sendMessage }) {
+export default function ChatAdmin({ msgList, sendMessage, client }) {
 
     const [message, setMessage] = useState("");
 
     function handleSend() {
-        sendMessage(message);
+        sendMessage(message, client);
         setMessage("");
     }
 
@@ -21,7 +21,7 @@ export default function Chat({ msgList, sendMessage }) {
             <div className="chat">
                 <div className="chat-list">
                     {msgList.map((chat, i) => (
-                        <ChatCard chat={chat} key={i} />
+                        <ChatCard chat={chat} client={client} key={i} />
                     ))}
                 </div>
                 <div className="chat-input">
@@ -50,15 +50,20 @@ export default function Chat({ msgList, sendMessage }) {
     );
 }
 
-function ChatCard({chat}) {
+function ChatCard({chat, client}) {
     return (
-        <div className={chat.mine ? "chatcard chatcard-mine" : "chatcard chatcard-friend"}>
-            <div className="chatcard-msg">
-                {chat.msg}
-            </div>
-            <div className="chatcard-time">
-                {chat.time}
-            </div>
+        <div>
+            {chat.from === client || chat.to === client ?
+                <div className={chat.mine ? "chatcard chatcard-mine" : "chatcard chatcard-friend"}>
+                    <div className="chatcard-msg">
+                        {chat.msg}
+                    </div>
+                    <div className="chatcard-time">
+                        {chat.time}
+                    </div>
+                </div>
+                :null
+            }
         </div>
     )
 }

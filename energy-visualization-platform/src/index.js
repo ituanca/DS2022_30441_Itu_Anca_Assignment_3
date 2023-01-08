@@ -27,6 +27,7 @@ import Chat from "./components/chat/Chat";
 import AdminSelection from "./components/client/AdminSelection";
 import ChatPage from "./components/chat/chatPage/ChatPage";
 import ChatWithClients from "./components/admin/userActions/ChatWithClients";
+import ChatAdmin from "./components/chat/ChatAdmin";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -57,6 +58,7 @@ root.render(
               <Route path="/Chat" element={<Chat />} />
               <Route path="/ChatPage" element={<ChatPage />} />
               <Route path="/ChatWithClients" element={<ChatWithClients />} />
+              <Route path="/ChatAdmin" element={<ChatAdmin />} />
           </Routes>
       </BrowserRouter>
 

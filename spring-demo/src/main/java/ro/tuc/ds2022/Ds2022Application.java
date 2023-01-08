@@ -24,14 +24,15 @@ public class Ds2022Application extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
-//        final int PORT = 9090;
-//        Server server = ServerBuilder.forPort(PORT)
-//                .addService(new ChatServiceImpl())
-//                .build();
-//        server.start();
-//        System.out.println("Server started...");
-//        server.awaitTermination();
 		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         SpringApplication.run(Ds2022Application.class, args);
+
+        final int PORT = 9090;
+        Server server = ServerBuilder.forPort(PORT)
+                .addService(new ChatServiceImpl())
+                .build();
+        server.start();
+        System.out.println("Server started...");
+        server.awaitTermination();
     }
 }

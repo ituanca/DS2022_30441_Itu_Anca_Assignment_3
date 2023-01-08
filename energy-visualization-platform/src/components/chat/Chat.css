@@ -28,8 +28,10 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
     width: 100%;
+    height: fit-content;
     padding: 6px;
     box-sizing: content-box;
+    margin-top: 5px;
 }
 
 .chat-input button {
@@ -37,6 +39,22 @@
     margin-left: 10px;
     background-color: #77d2ed;
     border-width: thin;
+}
+
+.chat-input input[type="submit"] {
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+    width: fit-content;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #53aec8;
+    border: thin white;
+}
+
+.chat-input input[type="submit"]:hover {
+    background: #5192a5;
 }
 
 .chatcard {
@@ -68,19 +86,4 @@
     text-align: right;
     font-size: 12px;
     margin-right: 10px;
-}
-
-.chat-input input[type="submit"] {
-    cursor: pointer;
-    color: #fff;
-    padding: 10px;
-    width: fit-content;
-    border-radius: 20px;
-    margin-left: 10px;
-    background-color: #53aec8;
-    border: thin white;
-}
-
-.chat-input input[type="submit"]:hover {
-    background: #5192a5;
 }

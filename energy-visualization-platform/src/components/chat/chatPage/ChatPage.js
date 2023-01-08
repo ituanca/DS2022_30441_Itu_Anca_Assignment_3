@@ -77,7 +77,7 @@ export default function ChatPage(){
                                 <Link to="/AdminSelection">
                                     <button className="go-back">Go back</button>
                                 </Link>
-                            :
+                                :
                                 <Link to="/ChatWithClients">
                                     <button className="go-back">Go back</button>
                                 </Link>
