@@ -24,9 +24,9 @@ import ViewDailyEnergyConsumption from "./components/client/ViewDailyEnergyConsu
 import Connect from "./components/webSocketConnection/Connection";
 import Popup from "./components/webSocketConnection/Popup";
 import Chat from "./components/chat/Chat";
-import AdminSelection from "./components/chat/AdminSelection";
+import AdminSelection from "./components/client/AdminSelection";
 import ChatPage from "./components/chat/chatPage/ChatPage";
-import ChatWithClients from "./components/chat/ChatWithClients";
+import ChatWithClients from "./components/admin/userActions/ChatWithClients";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

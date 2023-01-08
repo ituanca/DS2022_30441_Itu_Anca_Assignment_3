@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet} from "react-router-dom";
 import "./ChatWithClients.css"
-import {ChatServiceClient} from "../../output/generated1/src/grpc/protos/chat1_pb_service";
-import {Empty} from "../../output/generated1/src/grpc/protos/chat1_pb";
+import {ChatServiceClient} from "../../../output/generated1/src/grpc/protos/chat1_pb_service";
+import {Empty} from "../../../output/generated1/src/grpc/protos/chat1_pb";
 
 const client = new ChatServiceClient('http://localhost:8081');
 
