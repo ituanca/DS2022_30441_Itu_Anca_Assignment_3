@@ -86,8 +86,8 @@ export default function ChatWithClients(){
 
     return (
         <div>
-            <div className="app">
-                <div className="login-form">
+            <div className="app-chat">
+                <div className="login-form-chat">
                     <h3>Chat with clients</h3>
                     <span>&nbsp;&nbsp;</span>
                     <div className="container">
@@ -106,8 +106,8 @@ export default function ChatWithClients(){
             { Array.from(new Set(clients)).length > 0 && msgList.length > 0 ?
                 <div>
                     {Array.from(new Set(clients)).map((recipient) => (
-                        <div className="app">
-                            <div className="login-form">
+                        <div className="app-chat">
+                            <div className="login-form-chat">
                                 <h3>Chat with {recipient}</h3>
                                 <div className="chatpage">
                                     <div className="chatpage-section">

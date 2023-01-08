@@ -8,3 +8,28 @@
 .chatpage-section {
     flex: auto;
 }
+
+.app-chat {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("../../../img/b2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: auto;
+    padding: 20px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    font-family: Georgia, serif;
+    font-size: 18px;
+}
+
+.login-form-chat {
+    background: linear-gradient(to bottom right, rgba(134,236,147,1.0),rgba(254,243,189,1.0), rgba(134,236,147,1.0));
+    padding: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 1000px;
+    border-radius: 100px;
+}
