@@ -29,7 +29,7 @@ import ChatPage from "./components/chat/chatPage/ChatPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<App />} />
@@ -56,8 +56,8 @@ root.render(
               <Route path="/Chat" element={<Chat />} />
               <Route path="/ChatPage" element={<ChatPage />} />
           </Routes>
-      </BrowserRouter>,
-  </React.StrictMode>
+      </BrowserRouter>
+
 );
 
 reportWebVitals();

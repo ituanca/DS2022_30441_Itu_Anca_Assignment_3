@@ -3,8 +3,6 @@ import {Link, Outlet} from "react-router-dom";
 import "./AdminSelection.css"
 import {useEffect, useState} from "react";
 import axios from "axios";
-import ChatPage from "./chatPage/ChatPage";
-import {ChatServiceClient} from "../../output/generated1/src/grpc/protos/chat1_pb_service";
 
 function AdminSelection(){
 
@@ -22,6 +20,7 @@ function AdminSelection(){
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("user")));
+
         axios
             .get('http://localhost:8080/person/admins', {
                 params: {

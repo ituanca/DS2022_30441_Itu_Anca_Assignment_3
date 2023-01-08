@@ -11,12 +11,9 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
     @Override
     public void sendMsg(MessageRequest request, StreamObserver<Empty> responseObserver) {
-        System.out.println("You are in the SEND method or the greet service");
+        System.out.println("You are in the SEND method");
 
         ChatMessage chatMessage = request.getChatMessage();
-        String result = "from: " + chatMessage.getFrom() + " msg: " + chatMessage.getMsg() + " time: " + chatMessage.getTime();
-        System.out.println(result);
-
         chatMessages.add(chatMessage);
 
         Empty emptyResponse = Empty.newBuilder().getDefaultInstanceForType();
@@ -27,7 +24,7 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
     @Override
     public void receiveMsg(Empty request, StreamObserver<ChatMessage> responseObserver) {
-        System.out.println("You are in the RECEIVE method or the chat service");
+        System.out.println("You are in the RECEIVE method");
         if(chatMessages != null){
             for(ChatMessage chatMessage : chatMessages){
                 String result = "from: " + chatMessage.getFrom() + " msg: " + chatMessage.getMsg() + " time: " + chatMessage.getTime();

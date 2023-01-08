@@ -1,5 +1,3 @@
-
-
 .chat-input {
     display: flex;
     justify-content: space-between;
@@ -17,7 +15,7 @@
 
 .chat-list {
     padding: 4px;
-    height: 245px;
+    height: 350px;
     overflow: scroll;
 }
 
@@ -67,4 +65,19 @@
     text-align: right;
     font-size: 12px;
     margin-right: 10px;
+}
+
+.chat-input input[type="submit"] {
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-color: #53aec8;
+    border: thin white;
+}
+
+.chat-input input[type="submit"]:hover {
+    background: #5192a5;
 }

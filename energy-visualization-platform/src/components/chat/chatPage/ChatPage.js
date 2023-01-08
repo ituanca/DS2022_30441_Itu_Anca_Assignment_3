@@ -13,36 +13,31 @@ export default function ChatPage(){
     const [user] = useState(JSON.parse(localStorage.getItem("user")));
     const [selectedAdminUsername] = useState(JSON.parse(localStorage.getItem("selectedAdmin")));
     const [msgList, setMsgList] = useState([]);
-    const [pageLoaded, setPageLoaded] = useState(false);
 
     useEffect(() => {
-        if(!pageLoaded){
-            const request = new Empty();
+        const request = new Empty();
 
-            const chatStream = client.receiveMsg(request, {});
-            chatStream.on("data", (response) => {
-                const from = response.getFrom()
-                const msg = response.getMsg()
-                const time = response.getTime()
-                console.log("from: " + from + " msg: " + msg + " time: " + time)
+        const chatStream = client.receiveMsg(request, {});
+        chatStream.on("data", (response) => {
+            const from = response.getFrom()
+            const msg = response.getMsg()
+            const time = response.getTime()
+            console.log("from: " + from + " msg: " + msg + " time: " + time)
 
-                if (from === user.username) {
-                    setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: true },]);
-                } else {
-                    setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: false }]);
-                }
-            })
+            if (from === user.username) {
+                setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: true }]);
+            } else {
+                setMsgList((oldArray) => [...oldArray, { from, msg, time, mine: false }]);
+            }
+        })
 
-            chatStream.on("status", function (status) {
-                console.log(status.code, status.details, status.metadata);
-            });
+        chatStream.on("status", function (status) {
+            console.log(status.code, status.details, status.metadata);
+        });
 
-            chatStream.on("end", () => {
-                console.log("Stream ended.");
-            });
-
-            setPageLoaded(true);
-        }
+        chatStream.on("end", () => {
+            console.log("Stream ended.");
+        });
     }, [])
 
     function sendMessage(message) {
