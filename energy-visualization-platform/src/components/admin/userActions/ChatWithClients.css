@@ -1,6 +1,5 @@
 .chatpage {
     display: flex;
-
     border: 1px solid darkgrey;
     height: 60%;
 }

@@ -12,7 +12,6 @@ export default function ChatPage(){
 
     const [user] = useState(JSON.parse(localStorage.getItem("user")));
     const [recipient] = useState(JSON.parse(localStorage.getItem("selectedRecipient")));
-    const [userType] = useState(localStorage.getItem("userType"))
     const [msgList, setMsgList] = useState([]);
 
     useEffect(() => {
@@ -62,8 +61,6 @@ export default function ChatPage(){
             });
     }
 
-    console.log(user.type)
-
     return (
         <div className="app">
             <div className="login-form">
@@ -73,15 +70,9 @@ export default function ChatPage(){
                         <Chat msgList={msgList} sendMessage={sendMessage} />
                         <span>&nbsp;&nbsp;</span>
                         <nav>
-                            { userType === "client" ?
-                                <Link to="/AdminSelection">
-                                    <button className="go-back">Go back</button>
-                                </Link>
-                                :
-                                <Link to="/ChatWithClients">
-                                    <button className="go-back">Go back</button>
-                                </Link>
-                            }
+                            <Link to="/AdminSelection">
+                                <button className="go-back">Go back</button>
+                            </Link>
                         </nav>
                         <Outlet />
                     </div>

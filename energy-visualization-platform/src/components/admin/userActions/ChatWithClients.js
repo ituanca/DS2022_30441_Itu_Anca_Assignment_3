@@ -112,7 +112,6 @@ export default function ChatWithClients(){
                                 <div className="chatpage">
                                     <div className="chatpage-section">
                                         <ChatAdmin msgList={msgList} sendMessage={sendMessage} client={recipient} />
-                                        <span>&nbsp;&nbsp;</span>
                                     </div>
                                 </div>
                             </div>
@@ -122,6 +121,5 @@ export default function ChatWithClients(){
                 : null
             }
         </div>
-
     );
 }
