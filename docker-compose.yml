@@ -43,6 +43,7 @@ services:
       - DB_DBNAME=ds_assignment1
     ports:
       - 8080:8080
+      - 9090:9090
     depends_on:
       mysql-integration:
         condition: service_healthy
@@ -58,6 +59,8 @@ services:
     restart: always
     ports:
       - 3001:80
+      - 3002:80
+      - 3003:80
     networks:
       assignment1-network:
         ipv4_address: 172.16.0.54

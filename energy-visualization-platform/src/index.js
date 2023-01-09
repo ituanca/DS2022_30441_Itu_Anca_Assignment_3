@@ -23,10 +23,10 @@ import ViewMappings from "./components/admin/mappingActions/ViewMappings";
 import ViewDailyEnergyConsumption from "./components/client/ViewDailyEnergyConsumption";
 import Connect from "./components/webSocketConnection/Connection";
 import Popup from "./components/webSocketConnection/Popup";
-import Chat from "./components/chat/Chat";
+import ChatClient from "./components/chat/ChatClient";
 import AdminSelection from "./components/client/AdminSelection";
-import ChatPage from "./components/chat/chatPage/ChatPage";
-import ChatWithClients from "./components/admin/userActions/ChatWithClients";
+import ChatPageClient from "./components/chat/chatPage/ChatPageClient";
+import ChatPageAdmin from "./components/chat/chatPage/ChatPageAdmin";
 import ChatAdmin from "./components/chat/ChatAdmin";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -55,9 +55,9 @@ root.render(
               <Route path="/Connect" element={<Connect />} />
               <Route path="/Popup" element={<Popup />} />
               <Route path="/AdminSelection" element={<AdminSelection />} />
-              <Route path="/Chat" element={<Chat />} />
-              <Route path="/ChatPage" element={<ChatPage />} />
-              <Route path="/ChatWithClients" element={<ChatWithClients />} />
+              <Route path="/ChatClient" element={<ChatClient />} />
+              <Route path="/ChatPageClient" element={<ChatPageClient />} />
+              <Route path="/ChatPageAdmin" element={<ChatPageAdmin />} />
               <Route path="/ChatAdmin" element={<ChatAdmin />} />
           </Routes>
       </BrowserRouter>

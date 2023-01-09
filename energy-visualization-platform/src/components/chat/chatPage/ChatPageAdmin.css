@@ -25,6 +25,11 @@
     font-size: 18px;
 }
 
+.list-elements {
+    list-style-type: none;
+    font-weight: bold;
+}
+
 .login-form-chat {
     background: linear-gradient(to bottom right, rgba(134,236,147,1.0),rgba(254,243,189,1.0), rgba(134,236,147,1.0));
     padding: 40px;

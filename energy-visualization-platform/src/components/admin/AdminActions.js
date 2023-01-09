@@ -37,7 +37,7 @@ function AdminActions(){
                         </div>
                         <span>&nbsp;&nbsp;</span>
                         <div>
-                            <Link to="/ChatWithClients">
+                            <Link to="/ChatPageAdmin">
                                 <button className="users-button">Chat with clients</button>
                             </Link>
                         </div>

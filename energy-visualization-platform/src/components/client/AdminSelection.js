@@ -45,10 +45,6 @@ function AdminSelection(){
         setIsSubmitted(true)
     }
 
-    // const renderChatPage = () => {
-    //     return <ChatPage client={client} />
-    // }
-
     const render = () => {
         if(admins!==null && admins.length > 0){
             return (
@@ -71,11 +67,8 @@ function AdminSelection(){
                                 ))}
                             </select>
                         </div>
-                        {/*<div className="button-container">*/}
-                        {/*    <input type="submit" value={"Chat with " + admin.username}/>*/}
-                        {/*</div>*/}
                         <nav>
-                            <Link to="/ChatPage">
+                            <Link to="/ChatPageClient">
                                 <button className="users-button">Chat with {admin.username}</button>
                             </Link>
                         </nav>

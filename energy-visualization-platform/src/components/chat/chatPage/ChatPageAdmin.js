@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Link, Outlet} from "react-router-dom";
-import "./ChatWithClients.css"
+import "./ChatPageAdmin.css"
 import {ChatServiceClient} from "../../../output/generated1/src/grpc/protos/chat1_pb_service";
 import {ChatMessage, Empty, MessageRequest} from "../../../output/generated1/src/grpc/protos/chat1_pb";
-import ChatAdmin from "../../chat/ChatAdmin";
+import ChatAdmin from "../ChatAdmin";
 
 const client = new ChatServiceClient('http://localhost:8081');
 
-export default function ChatWithClients(){
+export default function ChatPageAdmin(){
 
     const [user] = useState(JSON.parse(localStorage.getItem("user")));
     const [clients, setClients] = useState([]);
@@ -66,21 +66,17 @@ export default function ChatWithClients(){
 
     const render = () => (
         <form>
-            <div className="container-multiple-cols">
-                <div className="input-container-col">
-                    {(clients.length === 0) ?
-                        <label>You have no messages</label>
-                    :
-                        <div>
-                            <label>You have messages from the following clients:</label>
-                            {Array.from(new Set(clients)).map((item) => (
-                                <li> {item} </li>
-                            ))}
-                        </div>
-                    }
-
+            {(clients.length === 0) ?
+                <label>You have no messages</label> :
+                <div>
+                    <label>You have messages from the following clients:</label>
+                    <div className="list-elements">
+                        {Array.from(new Set(clients)).map((item) => (
+                            <li> {item} </li>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            }
         </form>
     );
 

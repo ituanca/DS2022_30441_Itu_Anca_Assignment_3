@@ -1,14 +1,14 @@
 import React, {useEffect} from "react";
 import {Link, Outlet} from "react-router-dom";
-import "./ChatPage.css"
+import "./ChatPageClient.css"
 import {ChatMessage, MessageRequest, Empty} from "../../../output/generated1/src/grpc/protos/chat1_pb";
 import {useState} from "react";
-import Chat from "../Chat";
+import Chat from "../ChatClient";
 import {ChatServiceClient} from "../../../output/generated1/src/grpc/protos/chat1_pb_service";
 
 const client = new ChatServiceClient('http://localhost:8081');
 
-export default function ChatPage(){
+export default function ChatPageClient(){
 
     const [user] = useState(JSON.parse(localStorage.getItem("user")));
     const [recipient] = useState(JSON.parse(localStorage.getItem("selectedRecipient")));

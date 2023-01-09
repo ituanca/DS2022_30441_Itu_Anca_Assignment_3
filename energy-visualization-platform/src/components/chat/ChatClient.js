@@ -1,8 +1,8 @@
 import React from "react";
-import "./Chat.css"
+import "./ChatClient.css"
 import {useState} from "react";
 
-export default function Chat({ msgList, sendMessage }) {
+export default function ChatClient({ msgList, sendMessage }) {
 
     const [message, setMessage] = useState("");
 
