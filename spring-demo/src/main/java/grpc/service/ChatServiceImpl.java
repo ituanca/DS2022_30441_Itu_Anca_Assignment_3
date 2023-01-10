@@ -15,7 +15,6 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
 
         ChatMessage chatMessage = request.getChatMessage();
         chatMessages.add(chatMessage);
-        System.out.println(chatMessage.getTo());
         Empty emptyResponse = Empty.newBuilder().getDefaultInstanceForType();
 
         responseObserver.onNext(emptyResponse);// send the response
@@ -25,15 +24,13 @@ public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
     @Override
     public void receiveMsg(Empty request, StreamObserver<ChatMessage> responseObserver) {
         System.out.println("You are in the RECEIVE method");
-        if(chatMessages != null){
-            for(ChatMessage chatMessage : chatMessages){
-                String result = "from: " + chatMessage.getFrom() + " to: " + chatMessage.getTo() +
-                        " msg: " + chatMessage.getMsg() + " time: " + chatMessage.getTime();
-                System.out.println(result);
-                responseObserver.onNext(chatMessage);// send the response
-            }
-            responseObserver.onCompleted();// complete the execution
+        for(ChatMessage chatMessage : chatMessages){
+            String result = "from: " + chatMessage.getFrom() + " to: " + chatMessage.getTo() +
+                    " msg: " + chatMessage.getMsg() + " time: " + chatMessage.getTime();
+            System.out.println(result);
+            responseObserver.onNext(chatMessage);// send the response
         }
+        responseObserver.onCompleted();// complete the execution
     }
 
 }

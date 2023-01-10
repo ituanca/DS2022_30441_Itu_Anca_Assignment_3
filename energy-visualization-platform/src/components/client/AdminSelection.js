@@ -6,7 +6,7 @@ import axios from "axios";
 
 function AdminSelection(){
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [, setIsSubmitted] = useState(false);
     const [admin, setAdmin] = useState({
         id: "",
         name: "",
@@ -84,7 +84,6 @@ function AdminSelection(){
                 <h3>Chat with an admin</h3>
                 <div className="container">
                     <main className="main">
-                        {/*{isSubmitted ? renderChatPage() : render()}*/}
                         {render()}
                     </main>
                 </div>
